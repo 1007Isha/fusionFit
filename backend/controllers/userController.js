@@ -100,7 +100,9 @@ const loginUser = async (req, res) => {
 };
 
 const verifyEmail = async (req, res) => {
+  console.log('Yugam Verma')
   const { token } = req.params;
+  console.log(token);
 
   try {
     // Verify the token
