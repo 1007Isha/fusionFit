@@ -18,10 +18,15 @@ const SignIn = () => {
     e.preventDefault();
     setLoading(true); // Start loading
     try {
-      const response = await axios.post("http://localhost:8000/api/users/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:8000/api/users/login",
+        {
+          email,
+          password,
+        }
+      );
+    
+    
 
       // Display success toast
       toast.success("Sign in successful");

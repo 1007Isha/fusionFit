@@ -18,7 +18,10 @@ const ContactUs = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/api/users/contact", formData);
+      const response = await axios.post(
+        "http://localhost:8000/api/users/contact",
+        formData
+      );
       setFormData({ name: "", email: "", message: "" });
       toast.success(response.data.message);
     } catch (error) {
@@ -26,7 +29,7 @@ const ContactUs = () => {
       toast.error("There was an error sending your message. Please try again later.");
     }
   };
-
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 

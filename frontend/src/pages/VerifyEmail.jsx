@@ -13,12 +13,13 @@ const VerifyEmail = () => {
         const response = await axios.get(`http://localhost:8000/api/users/verify-email/${token}`);
         setMessage(response.data.message);
       } catch (error) {
-        setMessage(error.response.data.message || "An error occurred");
+        setMessage(error.response?.data?.message || "An error occurred");
       }
     };
-
+  
     verifyEmail();
   }, [token]);
+  
 
   return (
     <div className="text-center flex justify-center items-center">

@@ -47,11 +47,16 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8000/api/users/register", {
-        name,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "http://localhost:8000/api/users/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
+    
+    
 
       toast.success(
         "Registration successful! Please check your email to verify your account."

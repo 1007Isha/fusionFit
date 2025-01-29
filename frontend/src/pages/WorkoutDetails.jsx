@@ -98,45 +98,51 @@ const WorkoutDetails = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api/workouts', {
-        ...workoutData,
-        repsPerSet: workoutData.repsPerSet.map(rep => parseInt(rep || 0)),
-        weightPerSet: workoutData.weightPerSet.map(weight => parseFloat(weight || 0))
-      }, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('jwttoken')}` }
-      })
-      // console.log('Workout added:', response.data)
-      setWorkoutData({ muscleGroup: '', exercise: '', sets: '', repsPerSet: [], weightPerSet: [] })
-      fetchPastWorkouts()
+      const response = await axios.post(
+        'http://localhost:8000/api/workouts',
+        {
+          ...workoutData,
+          repsPerSet: workoutData.repsPerSet.map(rep => parseInt(rep || 0)),
+          weightPerSet: workoutData.weightPerSet.map(weight => parseFloat(weight || 0)),
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem('jwttoken')}` },
+        }
+      );
+      // console.log('Workout added:', response.data);
+      setWorkoutData({ muscleGroup: '', exercise: '', sets: '', repsPerSet: [], weightPerSet: [] });
+      fetchPastWorkouts();
     } catch (error) {
-      console.error('Error adding workout:', error.response?.data || error.message)
+      console.error('Error adding workout:', error.response?.data || error.message);
     }
-  }
-
+  };
+  
   const fetchPastWorkouts = async () => {
     try {
       const response = await axios.get('http://localhost:8000/api/workouts', {
-        headers: { Authorization: `Bearer ${localStorage.getItem('jwttoken')}` }
+        headers: { Authorization: `Bearer ${localStorage.getItem('jwttoken')}` },
       });
       setPastWorkouts(response.data);
     } catch (error) {
       console.error('Error fetching past workouts:', error);
     }
   };
+  
 
   const fetchAnalytics = async () => {
     if (!analyticsExercise) return;
     try {
       const response = await axios.get(`http://localhost:8000/api/workouts/analytics?exercise=${analyticsExercise}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('jwttoken')}` }
+        headers: { Authorization: `Bearer ${localStorage.getItem('jwttoken')}` },
       });
       setAnalyticsData(response.data);
     } catch (error) {
       console.error('Error fetching analytics:', error);
     }
   };
+  
 
   const prepareChartData = () => {
     if (!analyticsData) return null;
