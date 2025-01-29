@@ -17,11 +17,7 @@ app.get("/", (req,res)=>{
   res.send("server is running")
 })
 // Add CORS middleware here
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL, // Change this to your frontend URL
-  })
-);
+app.use(cors());
 
 app.use("/api/users", userRoutes);
 app.use("/api/workouts", workoutRoutes);
