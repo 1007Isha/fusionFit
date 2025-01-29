@@ -48,7 +48,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "https://fusionfit.onrender.com/api/users/register",
+        `${import.meta.env.VITE_BACKEND_URL}/api/users/register`,
         {
           name,
           email,

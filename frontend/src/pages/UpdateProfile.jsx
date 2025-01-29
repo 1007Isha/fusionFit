@@ -68,7 +68,7 @@ const UpdateProfile = () => {
       
 
       const response = await axios.put(
-        "https://fusionfit.onrender.com/api/users/update-profile",
+        `${import.meta.env.VITE_BACKEND_URL}/api/users/update-profile`,
         formDataToSend,
         {
           headers: {
