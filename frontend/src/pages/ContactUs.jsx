@@ -19,7 +19,7 @@ const ContactUs = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/users/contact",
+        "https://fusionfit.onrender.com//api/users/contact",
         formData
       );
       setFormData({ name: "", email: "", message: "" });

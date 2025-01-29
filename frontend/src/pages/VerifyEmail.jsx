@@ -10,7 +10,7 @@ const VerifyEmail = () => {
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/users/verify-email/${token}`);
+        const response = await axios.get(`https://fusionfit.onrender.com/api/users/verify-email/${token}`);
         setMessage(response.data.message);
       } catch (error) {
         setMessage(error.response?.data?.message || "An error occurred");
