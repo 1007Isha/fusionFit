@@ -8,6 +8,7 @@ const VerifyEmail = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    console.log("Hi i am in not foubd page");
     const verifyEmail = async () => {
       try {
         const response = await axios.get(`https://fusionfit.onrender.com/api/users/verify-email/${token}`);
