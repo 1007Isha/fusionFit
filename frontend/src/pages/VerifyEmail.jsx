@@ -11,7 +11,7 @@ const VerifyEmail = () => {
     console.log("Hi i am in not foubd page");
     const verifyEmail = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users/verify-email/${token}`);
+        const response = await axios.get('https://fusionfit.onrender.com/api/users/verify-email/${token}');
         setMessage(response.data.message);
       } catch (error) {
         setMessage(error.response?.data?.message || "An error occurred");

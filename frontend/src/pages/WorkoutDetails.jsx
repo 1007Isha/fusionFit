@@ -101,7 +101,7 @@ const WorkoutDetails = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/workouts`,
+        'https://fusionfit.onrender.com/api/workouts',
         {
           ...workoutData,
           repsPerSet: workoutData.repsPerSet.map(rep => parseInt(rep || 0)),
@@ -121,7 +121,7 @@ const WorkoutDetails = () => {
   
   const fetchPastWorkouts = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/workouts`, {
+      const response = await axios.get('https://fusionfit.onrender.com/api/workouts', {
         headers: { Authorization: `Bearer ${localStorage.getItem('jwttoken')}` },
       });
       setPastWorkouts(response.data);
@@ -134,7 +134,7 @@ const WorkoutDetails = () => {
   const fetchAnalytics = async () => {
     if (!analyticsExercise) return;
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/workouts/analytics?exercise=${analyticsExercise}`, {
+      const response = await axios.get(`https://fusionfit.onrender.com/api/workouts/analytics?exercise=${analyticsExercise}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('jwttoken')}` },
       });
       setAnalyticsData(response.data);
